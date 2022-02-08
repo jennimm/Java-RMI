@@ -2,7 +2,7 @@ import Pyro4
 # using Python3.4.2
 
 @Pyro4.expose
-class TestAPI:
+class AddAPI:
     velocity="yes"
     def __init__(self, daemon):
         self.daemon = daemon
@@ -16,8 +16,8 @@ class TestAPI:
 
 if __name__ == '__main__':
     daemon = Pyro4.Daemon(port=9999)
-    tapi = TestAPI(daemon)
-    uri = daemon.register(tapi, objectId='TestAPI')
+    tapi = AddAPI(daemon)
+    uri = daemon.register(tapi, objectId='AddAPI')
     daemon.requestLoop()
     print('exited requestLoop')
     daemon.close()
